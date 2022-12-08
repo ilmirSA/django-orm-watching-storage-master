@@ -13,8 +13,8 @@ def passcard_info_view(request, passcode):
     for visit in visits:
         visit_information = {
             'entered_at': visit.entered_at,
-            'duration': Visit.get_duration(visit),
-            'is_strange': Visit.is_visit_long(visit)
+            'duration': visit.get_duration(),
+            'is_strange': visit.is_visit_long()
         }
         this_passcard_visits.append(visit_information)
 

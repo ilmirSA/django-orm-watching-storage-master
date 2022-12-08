@@ -45,7 +45,6 @@ class Visit(models.Model):
         time = datetime.strftime(convert_to_datetime, '%Hч %Mмин')
         return time
 
-    @staticmethod
-    def is_visit_long(visit, minutes=60):
-        time_in_seconds = Visit.get_duration(visit).total_seconds() // 60
+    def is_visit_long(self, minutes=60):
+        time_in_seconds = self.get_duration().total_seconds() // 60
         return time_in_seconds > minutes
