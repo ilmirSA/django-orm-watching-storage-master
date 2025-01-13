@@ -1,16 +1,16 @@
 import os
 
+from environs import env
 
-from dotenv import load_dotenv
+env.read_env()
 
-load_dotenv()
+db_egine = env.str('DB_ENGINE')
+db_host = env.str('DB_HOST')
+db_port = env.int('DB_PORT')
+db_name = env.str('DB_NAME')
+db_user = env.str('DB_USER')
+db_password = env.str('DB_PASSWORD')
 
-db_egine = os.getenv('DB_ENGINE')
-db_host = os.getenv('DB_HOST')
-db_port = os.getenv('DB_PORT')
-db_name = os.getenv('DB_NAME')
-db_user = os.getenv('DB_USER')
-db_password = os.getenv('DB_PASSWORD')
 
 DATABASES = {
     'default': {
@@ -28,7 +28,7 @@ INSTALLED_APPS = ['datacenter']
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 
