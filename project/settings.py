@@ -1,7 +1,8 @@
 import os
 
-from environs import env
+from environs import Env
 
+env = Env()
 env.read_env()
 
 db_egine = env.str('DB_ENGINE')
@@ -32,8 +33,8 @@ DEBUG = env.bool('DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOST')
+print(ALLOWED_HOSTS)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
     {
